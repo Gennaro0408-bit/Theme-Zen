@@ -1,0 +1,112 @@
+/* ==========================================================================
+   Zen Chai — pagine interne (nuova scheda, about:blank, impostazioni)
+
+   Questo file non forza colori sui siti web: aggiunge solo una selezione
+   del testo e barre di scorrimento calde, che i siti possono comunque
+   sovrascrivere.
+   ========================================================================== */
+
+:root {
+  --chai-bg:            #F4E3CC;
+  --chai-surface:       #FFF8EE;
+  --chai-surface-2:     #FBEEDC;
+  --chai-paper:         #FFF9F1;
+  --chai-border:        #E2C6A2;
+  --chai-text:          #4A3020;
+  --chai-text-muted:    #74503A;
+  --chai-accent:        #E07B39;
+  --chai-accent-strong: #B0531A;
+  --chai-accent-soft:   rgb(224 123 57 / 0.17);
+  --chai-selection:     #F8CFA6;
+}
+
+/* ---- Su tutte le pagine: solo dettagli gentili --------------------------- */
+::selection {
+  background-color: var(--chai-selection);
+  color: var(--chai-text);
+}
+
+:root {
+  scrollbar-color: color-mix(in srgb, var(--chai-text) 28%, transparent) transparent;
+}
+
+/* ---- Pagina vuota -------------------------------------------------------- */
+@-moz-document url("about:blank") {
+  html {
+    background-color: var(--chai-paper) !important;
+  }
+}
+
+/* ---- Nuova scheda e home ------------------------------------------------- */
+@-moz-document url("about:newtab"), url("about:home"), url("about:privatebrowsing") {
+  :root,
+  body {
+    --newtab-background-color: var(--chai-paper) !important;
+    --newtab-background-color-secondary: var(--chai-surface) !important;
+    --newtab-text-primary-color: var(--chai-text) !important;
+    --newtab-text-secondary-color: var(--chai-text-muted) !important;
+    --newtab-primary-action-background: var(--chai-accent) !important;
+    --newtab-element-hover-color: var(--chai-accent-soft) !important;
+    --newtab-element-active-color: var(--chai-accent-soft) !important;
+    --newtab-border-color: var(--chai-border) !important;
+    --newtab-button-background: var(--chai-surface-2) !important;
+    --newtab-button-hover-background: var(--chai-accent-soft) !important;
+    --newtab-weather-background-color: var(--chai-surface) !important;
+    --newtab-wordmark-color: var(--chai-text) !important;
+    --newtab-search-icon-color: var(--chai-text-muted) !important;
+    --newtab-overlay-color: var(--chai-paper) !important;
+    background-color: var(--chai-paper) !important;
+    color: var(--chai-text) !important;
+  }
+
+  .search-wrapper .search-handoff-button,
+  .search-wrapper input {
+    background-color: var(--chai-surface) !important;
+    border: 1px solid var(--chai-border) !important;
+    box-shadow: 0 2px 10px -4px rgb(130 75 30 / 0.15) !important;
+    color: var(--chai-text) !important;
+  }
+
+  .top-site-outer .tile {
+    background-color: var(--chai-surface) !important;
+    box-shadow: 0 1px 4px rgb(130 75 30 / 0.15) !important;
+  }
+
+  .top-site-outer:is(:hover, :focus-within) .tile {
+    background-color: var(--chai-accent-soft) !important;
+  }
+}
+
+/* ---- Impostazioni, componenti aggiuntivi, librerie ----------------------- */
+@-moz-document url-prefix("about:preferences"), url-prefix("about:settings"),
+               url-prefix("about:addons"), url-prefix("about:downloads"),
+               url-prefix("about:config"), url-prefix("about:profiles") {
+  :root {
+    --in-content-page-background: var(--chai-paper) !important;
+    --in-content-page-color: var(--chai-text) !important;
+    --in-content-box-background: var(--chai-surface) !important;
+    --in-content-box-border-color: var(--chai-border) !important;
+    --in-content-border-color: var(--chai-border) !important;
+    --in-content-deemphasized-text: var(--chai-text-muted) !important;
+    --in-content-accent-color: var(--chai-accent) !important;
+    --in-content-link-color: var(--chai-accent-strong) !important;
+    --in-content-link-color-hover: var(--chai-accent) !important;
+    --in-content-item-selected: var(--chai-accent-soft) !important;
+    --in-content-item-selected-text: var(--chai-text) !important;
+    --in-content-item-hover: var(--chai-accent-soft) !important;
+    --in-content-primary-button-background: var(--chai-accent) !important;
+    --in-content-primary-button-background-hover: var(--chai-accent-strong) !important;
+    --in-content-primary-button-text-color: var(--chai-paper) !important;
+    --zen-colors-tertiary: var(--chai-paper) !important;
+    --zen-primary-color: var(--chai-accent) !important;
+    --color-accent-primary: var(--chai-accent) !important;
+    --background-color-canvas: var(--chai-paper) !important;
+    --text-color: var(--chai-text) !important;
+    --focus-outline-color: var(--chai-accent) !important;
+  }
+
+  body {
+    background-color: var(--chai-paper) !important;
+    color: var(--chai-text) !important;
+  }
+}

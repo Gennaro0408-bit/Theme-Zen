@@ -1,0 +1,315 @@
+/* ==========================================================================
+   Zen Chai — un tema caldo e calmo per Zen Browser (testato su 1.24)
+
+   Panna, arancio e marrone chiaro. Sempre chiaro, anche se macOS
+   è in modalità scura.
+
+   Tutti i colori sono definiti qui sotto in un unico punto: per
+   personalizzare il tema basta cambiare le variabili --chai-*.
+   ========================================================================== */
+
+/* #main-window:root batte anche le regole di Zen per le finestre private
+   e "non sincronizzate" (:root[zen-private-window], ...). */
+:root,
+#main-window:root {
+  /* ---- Palette ------------------------------------------------------- */
+  --chai-bg:            #F4E3CC;  /* finestra e sidebar: panna pesca     */
+  --chai-bg-deep:       #E8CDAB;  /* fondo del gradiente: marrone chiaro */
+  --chai-surface:       #FFF8EE;  /* scheda attiva, menu: panna          */
+  --chai-surface-2:     #FBEEDC;  /* campi e hover                       */
+  --chai-paper:         #FFF9F1;  /* pagina in caricamento               */
+  --chai-border:        #E2C6A2;
+  --chai-text:          #4A3020;  /* marrone cioccolato                  */
+  --chai-text-muted:    #74503A;
+  --chai-accent:        #E07B39;  /* arancio                             */
+  --chai-accent-strong: #B0531A;
+  --chai-accent-soft:   rgb(224 123 57 / 0.17);
+  --chai-selection:     #F8CFA6;
+  --chai-hover:         rgb(140 85 40 / 0.09);
+  --chai-active:        rgb(140 85 40 / 0.15);
+  --chai-shadow:        rgb(130 75 30 / 0.15);
+
+  /* Grana "carta" sullo sfondo (0 per disattivarla) */
+  --chai-grain: 0.04;
+
+  /* Morbidezza degli angoli */
+  --zen-border-radius: 10px !important;
+
+  /* ---- Sfondo finestra (sovrascrive il gradiente degli spazi) ---------- */
+  --chai-window-bg: linear-gradient(165deg, var(--chai-bg) 0%, var(--chai-bg-deep) 100%);
+  --zen-main-browser-background: var(--chai-window-bg) !important;
+  --zen-main-browser-background-toolbar: var(--chai-window-bg) !important;
+  --zen-main-browser-background-old: var(--chai-window-bg) !important;
+  --zen-main-browser-background-toolbar-old: var(--chai-window-bg) !important;
+  --zen-background-opacity: 1 !important;
+  --zen-themed-toolbar-bg-transparent: var(--chai-bg) !important;
+
+  /* ---- Colori derivati di Zen ---------------------------------------- */
+  --zen-primary-color: var(--chai-accent) !important;
+  --zen-colors-primary: var(--chai-surface) !important;
+  --in-content-accent-color: var(--chai-accent) !important;
+  --zen-colors-secondary: var(--chai-surface-2) !important;
+  --zen-colors-tertiary: var(--chai-surface) !important;
+  --zen-colors-hover-bg: var(--chai-hover) !important;
+  --zen-colors-primary-foreground: var(--chai-accent-strong) !important;
+  --zen-colors-border: var(--chai-border) !important;
+  --zen-colors-border-contrast: var(--chai-border) !important;
+  --zen-colors-input-bg: var(--chai-surface-2) !important;
+  --zen-dialog-background: var(--chai-surface) !important;
+  --zen-urlbar-background: var(--chai-surface-2) !important;
+  --zen-branding-bg: var(--chai-bg) !important;
+  --zen-branding-bg-reverse: var(--chai-text) !important;
+  --zen-sidebar-themed-icon-fill: var(--chai-accent) !important;
+  --zen-sidebar-notification-bg: var(--chai-surface) !important;
+
+  --zen-toolbar-element-bg: var(--chai-hover) !important;
+  --zen-toolbar-element-bg-hover: var(--chai-active) !important;
+  --zen-big-shadow: 0 2px 14px -2px var(--chai-shadow), 0 0 0 1px var(--chai-border) !important;
+
+  /* ---- Testo e pulsanti ---------------------------------------------- */
+  --toolbox-textcolor: var(--chai-text) !important;
+  --toolbar-color: var(--chai-text) !important;
+  --toolbar-color-scheme: light !important;
+  --toolbar-field-color: var(--chai-text) !important;
+  --lwt-text-color: var(--chai-text) !important;
+  --sidebar-text-color: var(--chai-text) !important;
+  --toolbarbutton-icon-fill: var(--chai-text) !important;
+
+  --toolbarbutton-background-color-hover: var(--chai-hover) !important;
+  --toolbarbutton-background-color-active: var(--chai-active) !important;
+  --tab-background-color-hover: var(--chai-hover) !important;
+  --urlbar-box-hover-bgcolor: var(--chai-hover) !important;
+  --urlbar-box-active-bgcolor: var(--chai-active) !important;
+
+  --toolbar-field-background-color: var(--chai-surface-2) !important;
+  --toolbar-field-focus-background-color: var(--chai-surface) !important;
+  --input-border-color: var(--chai-border) !important;
+  --zen-input-border-color: var(--chai-border) !important;
+
+  --focus-outline-color: var(--chai-accent) !important;
+  --color-accent-primary: var(--chai-accent) !important;
+  --color-accent-primary-hover: var(--chai-accent-strong) !important;
+  --link-color: var(--chai-accent-strong) !important;
+  --link-color-hover: var(--chai-accent) !important;
+
+  /* ---- Pannelli e menu ----------------------------------------------- */
+  --arrowpanel-background: var(--chai-surface) !important;
+  --arrowpanel-color: var(--chai-text) !important;
+  --arrowpanel-border-color: var(--chai-border) !important;
+  --panel-background-color: var(--chai-surface) !important;
+  --panel-border-color: var(--chai-border) !important;
+  --panel-item-hover-bgcolor: var(--chai-hover) !important;
+  --panel-separator-color: var(--chai-border) !important;
+  --menu-border-color: var(--chai-border) !important;
+
+  scrollbar-color: color-mix(in srgb, var(--chai-text) 22%, transparent) transparent;
+}
+
+/* Sempre chiaro: ignora la modalità scura di macOS, di Zen, degli spazi
+   e delle finestre private, così icone e controlli restano coordinati. */
+#main-window,
+#main-window #browser,
+#main-window panel,
+#main-window menupopup,
+#main-window tooltip,
+#main-window .zen-browser-generic-background,
+#main-window #urlbar,
+#main-window #zen-toast-container {
+  color-scheme: light !important;
+}
+
+/* Zen scrive i colori di sfondo direttamente su questi elementi (anche in
+   base al tema di macOS): li sovrascriviamo lì, non solo su :root. */
+#main-window .zen-browser-generic-background {
+  --zen-main-browser-background: var(--chai-window-bg) !important;
+  --zen-main-browser-background-toolbar: var(--chai-window-bg) !important;
+  --zen-main-browser-background-old: var(--chai-window-bg) !important;
+  --zen-main-browser-background-toolbar-old: var(--chai-window-bg) !important;
+  --zen-background-opacity: 1 !important;
+}
+
+/* Da Zen 1.24 ogni spazio imposta sul proprio elemento schema chiaro/scuro,
+   colore del testo e accento: li riportiamo alla palette del tema. */
+#navigator-toolbox zen-workspace {
+  color-scheme: light !important;
+  --toolbox-textcolor: var(--chai-text) !important;
+  --toolbar-color: var(--chai-text) !important;
+  --zen-primary-color: var(--chai-accent) !important;
+  color: var(--chai-text) !important;
+}
+
+#zen-main-app-wrapper,
+#zen-main-app-wrapper:-moz-window-inactive {
+  background: var(--chai-bg) !important;
+  color: var(--chai-text) !important;
+}
+
+/* Modalità compatta: la barra laterale fluttuante ha lo stesso colore di
+   quella fissa, senza l'effetto vetro che la scuriva. */
+#main-window .zen-toolbar-background {
+  background: var(--chai-window-bg) !important;
+  backdrop-filter: none !important;
+  box-shadow: 0 4px 24px -6px var(--chai-shadow), 0 0 0 1px var(--chai-border) !important;
+}
+
+#main-window .zen-toolbar-background::before,
+#main-window .zen-toolbar-background::after {
+  outline-color: var(--chai-border) !important;
+}
+
+/* ---- Grana carta --------------------------------------------------------- */
+.zen-browser-generic-background .zen-browser-grain {
+  display: flex !important;
+  opacity: var(--chai-grain) !important;
+}
+
+/* ---- Schede -------------------------------------------------------------- */
+#navigator-toolbox zen-workspace,
+#navigator-toolbox .tabbrowser-tab[zen-essential] {
+  --tab-background-color-selected: var(--chai-surface) !important;
+  --tab-text-color-selected: var(--chai-text) !important;
+  --tab-box-shadow-selected: 0 1px 3px var(--chai-shadow) !important;
+  --zen-essential-tab-selected-bg: var(--chai-surface) !important;
+  --zen-essential-tab-selected-bg-hover: var(--chai-surface) !important;
+}
+
+#navigator-toolbox .tabbrowser-tab {
+  color: var(--chai-text);
+}
+
+#navigator-toolbox .tabbrowser-tab:not([visuallyselected], [multiselected]) .tab-label {
+  color: var(--chai-text-muted);
+  transition: color 0.2s ease;
+}
+
+#navigator-toolbox .tabbrowser-tab:hover .tab-label {
+  color: var(--chai-text);
+}
+
+/* Le schede selezionate insieme diventano color ambra tenue */
+#navigator-toolbox .tabbrowser-tab[multiselected]:not([visuallyselected]) .tab-background {
+  background: var(--chai-accent-soft) !important;
+}
+
+/* Puntino ambra sulle schede che suonano */
+.tabbrowser-tab[soundplaying] .tab-icon-overlay {
+  color: var(--chai-accent) !important;
+}
+
+/* ---- Barra degli indirizzi ---------------------------------------------- */
+:root #urlbar[breakout-extend] .urlbar-background {
+  background-color: var(--chai-surface) !important;
+  outline: 1px solid var(--chai-border) !important;
+  box-shadow: 0 24px 80px -20px var(--chai-shadow), 0 4px 16px -6px var(--chai-shadow) !important;
+}
+
+#urlbar {
+  color: var(--chai-text) !important;
+}
+
+#urlbar .urlbar-input::placeholder {
+  color: var(--chai-text-muted) !important;
+}
+
+#urlbar .urlbar-input::selection {
+  background-color: var(--chai-selection);
+  color: var(--chai-text);
+}
+
+/* Risultati: evidenziazione morbida invece del blocco bianco su colore */
+:root .urlbarView-row[selected] {
+  background-color: var(--chai-accent-soft) !important;
+}
+
+:root .urlbarView-row[selected] *,
+:root .urlbarView-row[selected] .urlbarView-title-separator::before {
+  color: var(--chai-text) !important;
+}
+
+:root .urlbarView-row[selected] :is(.urlbarView-url, .urlbarView-action, .urlbarView-shortcutContent) {
+  color: var(--chai-accent-strong) !important;
+}
+
+:root .urlbarView-row[selected] .urlbarView-favicon {
+  fill: var(--chai-accent-strong) !important;
+  stroke: var(--chai-accent-strong) !important;
+}
+
+.urlbarView-row:not([selected]):hover {
+  background-color: var(--chai-hover) !important;
+}
+
+.urlbarView-url,
+.urlbarView-secondary {
+  color: var(--chai-accent-strong) !important;
+}
+
+/* ---- Area della pagina --------------------------------------------------- */
+/* Colore mostrato mentre la pagina carica: niente più lampi di bianco */
+#tabbrowser-tabpanels browser[type="content"]:not([transparent="true"]) {
+  background: var(--chai-paper) !important;
+}
+
+#tabbrowser-tabpanels .browserSidebarContainer {
+  outline: none !important;
+}
+
+/* ---- Menu, pannelli, finestre di dialogo -------------------------------- */
+menupopup,
+panel {
+  --panel-background-color: var(--chai-surface) !important;
+  --panel-border-color: var(--chai-border) !important;
+  --panel-color: var(--chai-text) !important;
+  --panel-shadow: 0 6px 24px -6px var(--chai-shadow) !important;
+}
+
+menupopup menuitem:is([_moz-menuactive], :hover),
+menupopup menu:is([_moz-menuactive], :hover) {
+  background-color: var(--chai-hover) !important;
+  color: var(--chai-text) !important;
+}
+
+menupopup menuitem[disabled] {
+  color: var(--chai-text-muted) !important;
+}
+
+menuseparator {
+  border-color: var(--chai-border) !important;
+}
+
+.panel-subview-body toolbarbutton:hover,
+#appMenu-popup toolbarbutton:hover {
+  background-color: var(--chai-hover) !important;
+}
+
+/* Tooltip */
+tooltip {
+  appearance: none !important;
+  background-color: var(--chai-text) !important;
+  color: var(--chai-bg) !important;
+  border: none !important;
+  border-radius: 8px !important;
+  padding: 4px 9px !important;
+  box-shadow: 0 4px 14px -4px var(--chai-shadow) !important;
+}
+
+/* Notifiche e toast di Zen */
+#zen-toast-container .zen-toast {
+  background: var(--chai-text) !important;
+  color: var(--chai-bg) !important;
+}
+
+/* ---- Selezione testo nell'interfaccia ----------------------------------- */
+::selection {
+  background-color: var(--chai-selection);
+  color: var(--chai-text);
+}
+
+/* ---- Movimenti più lenti e morbidi -------------------------------------- */
+@media not (prefers-reduced-motion: reduce) {
+  #navigator-toolbox .tabbrowser-tab .tab-background,
+  .toolbarbutton-1,
+  .urlbar-background {
+    transition: background-color 0.22s ease, box-shadow 0.22s ease !important;
+  }
+}
